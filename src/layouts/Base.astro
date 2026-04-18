@@ -1,0 +1,131 @@
+---
+import { getLangFromUrl, useTranslations, getLocalizedPath } from '../i18n/ui';
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const otherLang = lang === 'zh' ? 'en' : 'zh';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+const pageTitle = title || t('site.title');
+const pageDesc = description || t('site.description');
+---
+<!DOCTYPE html>
+<html lang={lang}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={pageDesc} />
+  <meta name="keywords" content="GitHub, Trending, 开源, AI, Open Source, GitHub热榜, 人工智能" />
+  <meta property="og:title" content={pageTitle} />
+  <meta property="og:description" content={pageDesc} />
+  <meta property="og:type" content="website" />
+  <link rel="icon" type="image/svg+xml" href="/GitHubCool/favicon.svg" />
+  <title>{pageTitle}</title>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href={getLocalizedPath(lang, '/')} class="logo">⚡ GitHub Cool</a>
+      <div class="nav-links">
+        <a href={getLocalizedPath(lang, '/')}>{t('nav.home')}</a>
+        <a href={getLocalizedPath(lang, '/trending/')}>{t('nav.trending')}</a>
+        <a href={getLocalizedPath(otherLang, Astro.url.pathname.replace('/GitHubCool', '').replace(`/${lang}`, ``))} class="lang-switch">🌐 {t('nav.lang')}</a>
+      </div>
+    </div>
+  </nav>
+  <main>
+    <slot />
+  </main>
+  <footer>
+    <p>{t('footer.text')}</p>
+  </footer>
+</body>
+</html>
+
+<style is:global>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #0d1117;
+    --bg-card: #161b22;
+    --border: #30363d;
+    --text: #e6edf3;
+    --text-muted: #8b949e;
+    --accent: #58a6ff;
+    --accent-green: #3fb950;
+    --accent-orange: #d29922;
+    --accent-red: #f85149;
+    --gradient: linear-gradient(135deg, #58a6ff 0%, #a371f7 100%);
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  nav {
+    background: rgba(13,17,23,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0 1rem;
+  }
+  .nav-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+  }
+  .logo {
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+  .nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+  .lang-switch {
+    border: 1px solid var(--border);
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem !important;
+  }
+
+  main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+  }
+
+  footer {
+    border-top: 1px solid var(--border);
+    text-align: center;
+    padding: 2rem;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-top: 4rem;
+  }
+
+  h1, h2, h3 { line-height: 1.3; }
+  a { color: var(--accent); }
+</style>
