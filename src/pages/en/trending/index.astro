@@ -1,14 +1,8 @@
 ---
 import Base from '../../../layouts/Base.astro';
+import archives from '../../../data/trending.json';
 
-const posts = [
-  {
-    date: '2026-04-18',
-    title: 'GitHub Trending Top 10 (Apr 18, 2026) — AI Agents Dominate!',
-    summary: 'AI took 7/10 spots. From LLM learning roadmaps to privacy-first assistants, this issue captures the strongest open-source signals.',
-    href: '/GitHubCool/en/trending/2026-04-18/'
-  }
-];
+const posts = archives.en;
 ---
 <Base title="Trending Archive | GitHubCool" description="GitHubCool daily trending article list. Daily posts are archived as date-named pages.">
   <section class="archive">

@@ -1,0 +1,128 @@
+---
+import Base from '../../../layouts/Base.astro';
+
+const repos = [
+  {
+    "name": "Fincept-Corporation/FinceptTerminal",
+    "url": "https://github.com/Fincept-Corporation/FinceptTerminal",
+    "desc": "FinceptTerminal is a modern finance application offering advanced market analytics, investment research, and economic data tools, designed for interactive exploration and data-driven decision-making in a user-friendly environment.",
+    "lang": "Python",
+    "total": "10,811",
+    "today": "3,109"
+  },
+  {
+    "name": "thunderbird/thunderbolt",
+    "url": "https://github.com/thunderbird/thunderbolt",
+    "desc": "AI You Control: Choose your models. Own your data. Eliminate vendor lock-in.",
+    "lang": "TypeScript",
+    "total": "3,131",
+    "today": "675"
+  },
+  {
+    "name": "zilliztech/claude-context",
+    "url": "https://github.com/zilliztech/claude-context",
+    "desc": "Code search MCP for Claude Code. Make entire codebase the context for any coding agent.",
+    "lang": "TypeScript",
+    "total": "6,193",
+    "today": "74"
+  },
+  {
+    "name": "ruvnet/RuView",
+    "url": "https://github.com/ruvnet/RuView",
+    "desc": "π RuView: WiFi DensePose turns commodity WiFi signals into real-time human pose estimation, vital sign monitoring, and presence detection — all without a single pixel of video.",
+    "lang": "Rust",
+    "total": "48,631",
+    "today": "713"
+  },
+  {
+    "name": "microsoft/ai-agents-for-beginners",
+    "url": "https://github.com/microsoft/ai-agents-for-beginners",
+    "desc": "12 Lessons to Get Started Building AI Agents",
+    "lang": "Jupyter Notebook",
+    "total": "57,216",
+    "today": "131"
+  },
+  {
+    "name": "dayanch96/YTLite",
+    "url": "https://github.com/dayanch96/YTLite",
+    "desc": "A flexible enhancer for YouTube on iOS",
+    "lang": "Logos",
+    "total": "4,697",
+    "today": "43"
+  },
+  {
+    "name": "HKUDS/RAG-Anything",
+    "url": "https://github.com/HKUDS/RAG-Anything",
+    "desc": "\"RAG-Anything: All-in-One RAG Framework\"",
+    "lang": "Python",
+    "total": "16,504",
+    "today": "245"
+  },
+  {
+    "name": "sansan0/TrendRadar",
+    "url": "https://github.com/sansan0/TrendRadar",
+    "desc": "⭐AI-driven public opinion & trend monitor with multi-platform aggregation, RSS, and smart alerts.🎯 告别信息过载，你的 AI 舆情监控助手与热点筛选工具！聚合多平台热点 + RSS 订阅，支持关键词精准筛选。AI 智能筛选新闻 + AI 翻译 + AI 分析简报直推手机，也支持接入 MCP 架构，赋能 AI 自然语言对话分析、情感洞察与趋势预测等。支持 Docker ，数据本地/云端自持。集成微信/飞书/钉钉/Telegram/邮件/ntfy/bark/slack 等渠道智能推送。",
+    "lang": "Python",
+    "total": "53,249",
+    "today": "604"
+  }
+];
+const takeaways = ["🔥 榜首项目：Fincept-Corporation/FinceptTerminal（今日 +3,109）", "⚡ 第二名：thunderbird/thunderbolt（今日 +675）", "🧭 今日榜单覆盖 AI、基础设施、效率工具等方向"];
+
+function rankLabel(i: number) {
+  return i === 0 ? '🥇 1' : i === 1 ? '🥈 2' : i === 2 ? '🥉 3' : `#${i + 1}`;
+}
+---
+<Base title="GitHub 今日热榜 Top 10（2026年4月21日）— Fincept-Corporation/FinceptTerminal 领跑 +3,109⭐" description="2026-04-21 GitHub Trending 每日精选，Top 10 开源项目速览与解读。">
+
+<article class="post">
+  <header>
+    <span class="tag">🔥 热榜</span>
+    <h1>GitHub 今日热榜 Top 10（2026年4月21日）</h1>
+    <p class="meta">📅 2026-04-21 · ✍️ GitHubCool · 🏷️ GitHub Trending, Open Source</p>
+  </header>
+
+  <section class="intro">
+    <p>每日追踪 GitHub Trending Top 10，聚焦 AI、开发工具与高增长项目。</p>
+  </section>
+
+  <section class="repo-list">
+    {repos.map((repo, i) => (
+      <div class={`repo-card ${i < 3 ? 'top3' : ''}`}>
+        <div class="rank">{rankLabel(i)}</div>
+        <h2><a href={repo.url} target="_blank">{repo.name}</a></h2>
+        <p class="stars">⭐ {repo.total} total | +{repo.today} today | {repo.lang}</p>
+        <p>{repo.desc || 'No description provided.'}</p>
+      </div>
+    ))}
+  </section>
+
+  <section class="summary">
+    <h2>📊 今日总结</h2>
+    <ul>
+      {takeaways.map((line) => <li>{line}</li>)}
+    </ul>
+    <p>关注 GitHubCool，每日为你追踪 GitHub 最新趋势！🚀</p>
+  </section>
+</article>
+
+</Base>
+
+<style>
+  .post { max-width: 800px; margin: 0 auto; }
+  .post header { text-align: center; margin-bottom: 2rem; }
+  .post h1 { font-size: 2rem; margin: 1rem 0; line-height: 1.4; }
+  .meta { color: var(--text-muted); font-size: 0.9rem; }
+  .intro { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem; }
+  .repo-list { display: flex; flex-direction: column; gap: 1rem; }
+  .repo-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; transition: border-color 0.2s; }
+  .repo-card:hover { border-color: var(--accent); }
+  .repo-card.top3 { border-left: 3px solid var(--accent); }
+  .rank { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .repo-card h2 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+  .repo-card h2 a { text-decoration: none; }
+  .stars { color: var(--accent-orange); font-size: 0.9rem; margin-bottom: 0.6rem; }
+  .summary { margin-top: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+  .summary ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.8rem; }
+  .tag { display: inline-block; background: rgba(248,81,73,0.15); color: var(--accent-red); padding: 2px 10px; border-radius: 20px; font-size: 0.8rem; }
+</style>

@@ -1,7 +1,9 @@
 ---
 import Base from '../../layouts/Base.astro';
 import { useTranslations } from '../../i18n/ui';
+import archives from '../../data/trending.json';
 const t = useTranslations('zh');
+const latest = archives.zh[0];
 ---
 <Base>
   <section class="hero">
@@ -27,11 +29,11 @@ const t = useTranslations('zh');
 
   <section class="latest">
     <h2>📰 最新文章</h2>
-    <a href="/GitHubCool/zh/trending/" class="article-card">
+    <a href={latest.href} class="article-card">
       <span class="tag">🔥 热榜</span>
-      <h3>GitHub 今日热榜 Top 10（2026年4月18日）— AI Agent 全面霸榜！</h3>
-      <p>AI 浪潮势不可挡，今天的 GitHub Trending 几乎被 AI 相关项目屠榜。7/10 的项目与 AI 相关……</p>
-      <span class="date">2026-04-18</span>
+      <h3>{latest.title}</h3>
+      <p>{latest.summary}</p>
+      <span class="date">{latest.date}</span>
     </a>
   </section>
 </Base>

@@ -1,14 +1,8 @@
 ---
 import Base from '../../../layouts/Base.astro';
+import archives from '../../../data/trending.json';
 
-const posts = [
-  {
-    date: '2026-04-20',
-    title: 'GitHub 今日热榜 Top 10（2026年4月20日）— 金融终端杀疯了！WiFi 透视黑科技炸场！',
-    summary: 'FinceptTerminal 单日 +3129 登顶，RuView 的 WiFi 人体姿态估计炸场，OpenAI Agents 持续高热。',
-    href: '/GitHubCool/zh/trending/2026-04-20/'
-  }
-];
+const posts = archives.zh;
 ---
 <Base title="今日趋势｜GitHubCool" description="GitHubCool 今日趋势文章列表。每日热榜按日期归档，点击查看完整解读。">
   <section class="archive">
