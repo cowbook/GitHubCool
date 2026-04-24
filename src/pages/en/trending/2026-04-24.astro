@@ -1,0 +1,144 @@
+---
+import Base from '../../../layouts/Base.astro';
+
+const repos = [
+  {
+    "name": "Alishahryar1/free-claude-code",
+    "url": "https://github.com/Alishahryar1/free-claude-code",
+    "desc": "Use claude-code for free in the terminal, VSCode extension or via discord like openclaw",
+    "lang": "Python",
+    "total": "7,237",
+    "today": "2,640"
+  },
+  {
+    "name": "huggingface/ml-intern",
+    "url": "https://github.com/huggingface/ml-intern",
+    "desc": "🤗 ml-intern: an open-source ML engineer that reads papers, trains models, and ships ML models",
+    "lang": "Python",
+    "total": "4,767",
+    "today": "2,981"
+  },
+  {
+    "name": "google/osv-scanner",
+    "url": "https://github.com/google/osv-scanner",
+    "desc": "Vulnerability scanner written in Go which uses the data provided by https://osv.dev",
+    "lang": "Go",
+    "total": "9,302",
+    "today": "147"
+  },
+  {
+    "name": "Z4nzu/hackingtool",
+    "url": "https://github.com/Z4nzu/hackingtool",
+    "desc": "ALL IN ONE Hacking Tool For Hackers",
+    "lang": "Python",
+    "total": "61,877",
+    "today": "1,377"
+  },
+  {
+    "name": "zilliztech/claude-context",
+    "url": "https://github.com/zilliztech/claude-context",
+    "desc": "Code search MCP for Claude Code. Make entire codebase the context for any coding agent.",
+    "lang": "TypeScript",
+    "total": "8,817",
+    "today": "706"
+  },
+  {
+    "name": "open-metadata/OpenMetadata",
+    "url": "https://github.com/open-metadata/OpenMetadata",
+    "desc": "OpenMetadata is a unified metadata platform for data discovery, data observability, and data governance powered by a central metadata repository, in-depth column level lineage, and seamless team collaboration.",
+    "lang": "TypeScript",
+    "total": "13,209",
+    "today": "530"
+  },
+  {
+    "name": "PostHog/posthog",
+    "url": "https://github.com/PostHog/posthog",
+    "desc": "🦔 PostHog is an all-in-one developer platform for building successful products. We offer product analytics, web analytics, session replay, error tracking, feature flags, experimentation, surveys, data warehouse, a CDP, and an AI product assistant to help debug your code, ship features faster, and keep all your usage and customer data in one stack.",
+    "lang": "Python",
+    "total": "32,927",
+    "today": "90"
+  },
+  {
+    "name": "dani-garcia/vaultwarden",
+    "url": "https://github.com/dani-garcia/vaultwarden",
+    "desc": "Unofficial Bitwarden compatible server written in Rust, formerly known as bitwarden_rs",
+    "lang": "Rust",
+    "total": "59,072",
+    "today": "252"
+  },
+  {
+    "name": "Anil-matcha/Open-Generative-AI",
+    "url": "https://github.com/Anil-matcha/Open-Generative-AI",
+    "desc": "Uncensored, open-source alternative to Higgsfield AI, Freepik AI, Krea AI, Openart AI — Free, unrestricted AI image & video generation studio with 200+ models (Flux, Midjourney, Kling, Sora, Veo). No content filters. Self-hosted, MIT licensed.",
+    "lang": "JavaScript",
+    "total": "7,400",
+    "today": "316"
+  },
+  {
+    "name": "codecrafters-io/build-your-own-x",
+    "url": "https://github.com/codecrafters-io/build-your-own-x",
+    "desc": "Master programming by recreating your favorite technologies from scratch.",
+    "lang": "Markdown",
+    "total": "494,208",
+    "today": "817"
+  }
+];
+const takeaways = ["🔥 #1 project: Alishahryar1/free-claude-code (+2,640 today)", "⚡ #2 project: huggingface/ml-intern (+2,981 today)", "🧭 The list spans AI, infra, and developer productivity tooling"];
+
+function rankLabel(i: number) {
+  return i === 0 ? '🥇 1' : i === 1 ? '🥈 2' : i === 2 ? '🥉 3' : `#${i + 1}`;
+}
+---
+<Base title="GitHub Trending Top 10 (Apr 24, 2026) — Alishahryar1/free-claude-code Leads" description="Daily GitHub Trending Top 10 for 2026-04-24, with concise analysis and highlights.">
+
+<article class="post">
+  <header>
+    <span class="tag">🔥 Trending</span>
+    <h1>GitHub Trending Top 10 (Apr 24, 2026)</h1>
+    <p class="meta">📅 2026-04-24 · ✍️ GitHubCool · 🏷️ GitHub Trending, Open Source</p>
+  </header>
+
+  <section class="intro">
+    <p>Daily GitHub Trending Top 10, focused on AI, dev tools, and high-growth open-source projects.</p>
+  </section>
+
+  <section class="repo-list">
+    {repos.map((repo, i) => (
+      <div class={`repo-card ${i < 3 ? 'top3' : ''}`}>
+        <div class="rank">{rankLabel(i)}</div>
+        <h2><a href={repo.url} target="_blank">{repo.name}</a></h2>
+        <p class="stars">⭐ {repo.total} total | +{repo.today} today | {repo.lang}</p>
+        <p>{repo.desc || 'No description provided.'}</p>
+      </div>
+    ))}
+  </section>
+
+  <section class="summary">
+    <h2>📊 Today's Takeaways</h2>
+    <ul>
+      {takeaways.map((line) => <li>{line}</li>)}
+    </ul>
+    <p>Follow GitHubCool for daily GitHub trending insights! 🚀</p>
+  </section>
+</article>
+
+</Base>
+
+<style>
+  .post { max-width: 800px; margin: 0 auto; }
+  .post header { text-align: center; margin-bottom: 2rem; }
+  .post h1 { font-size: 2rem; margin: 1rem 0; line-height: 1.4; }
+  .meta { color: var(--text-muted); font-size: 0.9rem; }
+  .intro { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; margin-bottom: 1.5rem; }
+  .repo-list { display: flex; flex-direction: column; gap: 1rem; }
+  .repo-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; transition: border-color 0.2s; }
+  .repo-card:hover { border-color: var(--accent); }
+  .repo-card.top3 { border-left: 3px solid var(--accent); }
+  .rank { font-size: 1.35rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .repo-card h2 { font-size: 1.1rem; margin-bottom: 0.4rem; }
+  .repo-card h2 a { text-decoration: none; }
+  .stars { color: var(--accent-orange); font-size: 0.9rem; margin-bottom: 0.6rem; }
+  .summary { margin-top: 2rem; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 1.25rem; }
+  .summary ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 0.8rem; }
+  .tag { display: inline-block; background: rgba(248,81,73,0.15); color: var(--accent-red); padding: 2px 10px; border-radius: 20px; font-size: 0.8rem; }
+</style>
